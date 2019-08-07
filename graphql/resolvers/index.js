@@ -110,5 +110,14 @@ module.exports = {
         } catch (err) {
             throw err;
         }
+    },
+    deleteItem: async args => {
+        try {
+            const item = await Item.findById(args.itemId);
+            await Item.deleteOne({ _id: args.itemId });
+            return item;
+        } catch (err) {
+            throw err;
+        }
     }
 }
