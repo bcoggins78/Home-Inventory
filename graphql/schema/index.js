@@ -10,7 +10,6 @@ module.exports = buildSchema(`
         estValue: Float
         image: String
         comment: String
-        date: String!
         creator: User!
     }
 
@@ -35,7 +34,6 @@ module.exports = buildSchema(`
         estValue: Float
         image: String
         comment: String
-        date: String!
     }
 
     input UserInput {
