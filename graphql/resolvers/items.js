@@ -14,7 +14,10 @@ module.exports = {
             throw err;
         };
     },
-    createItem: async args => {
+    createItem: async (args, req) => {
+        if (!req.isAuth) {
+            throw new Error('Unauthenticated!');
+        }
         const item = new Item({
             name: args.itemInput.name,
             serial: args.itemInput.serial,
@@ -44,7 +47,10 @@ module.exports = {
             throw err;
         };
     },
-    deleteItem: async args => {
+    deleteItem: async (args, req) => {
+        if (!req.isAuth) {
+            throw new Error('Unauthenticated!');
+        }
         try {
             const removeItem = await Item.findById(args.itemId);
             const item = transformItem(removeItem);

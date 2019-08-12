@@ -26,6 +26,12 @@ module.exports = buildSchema(`
         createdItems: [Item!]
     }
 
+    type AuthData {
+        userId: ID!
+        token: String!
+        tokenExpiration: Int!
+    }
+
     input ItemInput {
         name: String!
         serial: String
@@ -49,6 +55,7 @@ module.exports = buildSchema(`
 
     type RootQuery {
         items: [Item!]!
+        login(userName: String!, password: String!): AuthData!
     }
 
     type RootMutation {
