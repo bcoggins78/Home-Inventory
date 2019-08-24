@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import AuthContext from '../context/auth-context';
 
 class LoginPage extends Component {
 
     state = {
         isLogin: true
     }
+
+    static contextType = AuthContext;
 
     constructor(props) {
         super(props);
@@ -47,6 +50,13 @@ class LoginPage extends Component {
                 return res.json();
             })
             .then(resData => {
+                if (resData.data.login.token) {
+                    this.context.login(
+                        resData.data.login.token,
+                        resData.data.login.userId,
+                        resData.data.login.tokenExpiration
+                    );
+                }
                 console.log(resData);
             })
             .catch(err => {
