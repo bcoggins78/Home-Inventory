@@ -10,6 +10,7 @@ const navBar = props => (
         </div>
         <nav className="main-nav-links">
             <ul>
+                <li><NavLink to="/register">Sign Up</NavLink></li>
                 <li><NavLink to="/login">Login</NavLink></li>
                 <li><NavLink to="/items">Inventory</NavLink></li>
             </ul>
