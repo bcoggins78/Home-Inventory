@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
+import RegisterPage from './pages/Register';
 import LoginPage from './pages/Login';
 import ItemsPage from './pages/Items';
 import NavBar from './components/NavBar/NavBar'
@@ -16,6 +17,7 @@ class App extends Component {
           <Switch>
             <Redirect from="/" to="/login" exact />
             <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
             <Route path="/items" component={ItemsPage} />
           </Switch>
         </main>
