@@ -29,6 +29,8 @@ class App extends Component {
           <NavBar />
           <main className="main-content">
             <Switch>
+              {this.state.token && <Redirect from="/" to="/items" exact />}
+              {this.state.token && <Redirect from="/login" to="/items" exact />}
               {!this.state.token && <Redirect from="/" to="/login" exact />}
               {!this.state.token && <Redirect from="/items" to="/login" exact />}
               {!this.state.token && <Redirect from="/profile" to="/login" exact />}
