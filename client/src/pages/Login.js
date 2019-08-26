@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import AuthContext from '../context/auth-context';
 
+import './Login.css'
+
 class LoginPage extends Component {
 
     state = {
@@ -24,7 +26,7 @@ class LoginPage extends Component {
         if (userName.trim().length === 0 || password.trim().length === 0) {
             return;
         }
-        
+
         let requestBody = {
             query: `
                 query {
@@ -68,19 +70,23 @@ class LoginPage extends Component {
 
     render() {
         return (
-            <form className = "login-form" onSubmit = {this.submitHandler}>
-                <div className = "form-input">
-                    <label htmlFor="username">Username</label>
-                    <input type = "username" ref = {this.userNameEl}></input>
+            <form className="login-form" onSubmit={this.submitHandler}>
+                <div className="form-container">
+                    <div className="form-input">
+                        <label htmlFor="username">Username</label>
+                        <input type="username" ref={this.userNameEl}></input>
+                    </div>
+                    <div className="form-input">
+                        <label htmlFor="password">Password</label>
+                        <input type="password" ref={this.passwordEl}></input>
+                    </div>
+                    <div className="form-submit">
+                        <button className="btn" type="submit">Login</button>
+                    </div>
+                    <div className="have-account">
+                        <span>Don't have an account? <NavLink to="/register">Sign Up</NavLink></span>
+                    </div>
                 </div>
-                <div className = "form-input">
-                    <label htmlFor="password">Password</label>
-                    <input type = "password" ref = {this.passwordEl}></input>
-                </div>
-                <div className = "form-submit">
-                    <button type = "submit">Login</button>
-                </div>
-                <span><NavLink to="/register">Sign Up</NavLink></span>
 
             </form>
         )
