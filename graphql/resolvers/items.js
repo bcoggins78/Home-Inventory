@@ -26,14 +26,14 @@ module.exports = {
             estValue: args.itemInput.estValue,
             image: args.itemInput.image,
             comment: args.itemInput.comment,
-            creator: '5d464952db300d0e2c462df2'
+            creator: req.userId
         });
         let createdItem;
         try {
             const result = await item
                 .save()
             createdItem = transformItem(result);
-            const creator = await User.findById('5d464952db300d0e2c462df2')
+            const creator = await User.findById(req.userId)
 
             if (!creator) {
                 throw new Error('User not found.')
