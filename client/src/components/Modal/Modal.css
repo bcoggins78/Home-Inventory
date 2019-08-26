@@ -3,8 +3,9 @@
     background: white;
     box-shadow: 0 2px 8px rgba(0,0,0,0.26);
     position: fixed;
-    top: 20vh;
+    top: 5vh;
     left: 5%;
+    text-align: center;
 }
 
 .modal-header {
@@ -22,10 +23,20 @@
     padding: 1rem;
 }
 
+.modal-image {
+    width: 50%;
+}
+
 .modal-actions {
     display: flex;
     justify-content: flex-end;
     padding: 1rem;
+}
+
+.modal-cell {
+    border: 2px solid rgb(67, 144, 245);
+    padding: 1rem;
+    margin-bottom: -2px;
 }
 
 @media (min-width: 768px) {
