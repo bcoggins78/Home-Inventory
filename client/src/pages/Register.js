@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import './Register.css'
+
 class RegisterPage extends Component {
 
     constructor(props) {
@@ -67,48 +69,53 @@ class RegisterPage extends Component {
     }
 
     render() {
-        return (<form className="login-form" onSubmit={this.submitHandler}>
-            <div className="form-input">
-                <label htmlFor="username">Username</label>
-                <input type="username" ref={this.userNameEl}></input>
-            </div>
-            <div className="form-input">
-                <label htmlFor="password">Password</label>
-                <input type="password" ref={this.passwordEl}></input>
-            </div>
-            <div className="form-input">
-                <label htmlFor="email">Email</label>
-                <input type="email" ref={this.emailEl}></input>
-            </div>
-            <div className="form-input">
-                <label htmlFor="firstname">First Name</label>
-                <input type="text" ref={this.firstNameEl} name = "firstname"></input>
-            </div>
-            <div className="form-input">
-                <label htmlFor="lastname">Last Name</label>
-                <input type="text" ref={this.lastNameEl} name = "lastname"></input>
-            </div>
-            <div className="form-input">
-                <label htmlFor="insname">Insurance Company</label>
-                <input type="text" ref={this.insNameEl} name = "insname"></input>
-            </div>
-            <div className="form-input">
-                <label htmlFor="inspolicy">Insurance Policy Number</label>
-                <input type="text" ref={this.insPolicyEl} name = "inspolicy"></input>
-            </div>
-            <div className="form-input">
-                <label htmlFor="insnumber">Insurance Phone Number</label>
-                <input type="text" ref={this.insContactEl} name = "insnumber"></input>
-            </div>
+        return (<form className="register-form" onSubmit={this.submitHandler}>
+            <div className="form-container">
+                <div className="form-input">
+                    <label htmlFor="username">Username</label>
+                    <input type="username" ref={this.userNameEl}></input>
+                </div>
+                <div className="form-input">
+                    <label htmlFor="password">Password</label>
+                    <input type="password" ref={this.passwordEl}></input>
+                </div>
+                <div className="form-input">
+                    <label htmlFor="email">Email</label>
+                    <input type="email" ref={this.emailEl}></input>
+                </div>
+                <div className="form-input">
+                    <label htmlFor="firstname">First Name</label>
+                    <input type="text" ref={this.firstNameEl} name="firstname"></input>
+                </div>
+                <div className="form-input">
+                    <label htmlFor="lastname">Last Name</label>
+                    <input type="text" ref={this.lastNameEl} name="lastname"></input>
+                </div>
+                <div className="form-input">
+                    <label htmlFor="insname">Insurance Company</label>
+                    <input type="text" ref={this.insNameEl} name="insname"></input>
+                </div>
+                <div className="form-input">
+                    <label htmlFor="inspolicy">Insurance Policy Number</label>
+                    <input type="text" ref={this.insPolicyEl} name="inspolicy"></input>
+                </div>
+                <div className="form-input">
+                    <label htmlFor="insnumber">Insurance Phone Number</label>
+                    <input type="text" ref={this.insContactEl} name="insnumber"></input>
+                </div>
 
-
-            <div className="form-submit">
-                <button type="submit">Register</button>
+                <div className="register-control">
+                    <div className="form-submit">
+                        <button className="btn" type="submit">Register</button>
+                    </div>
+                    <div className="form-submit">
+                        <button className="btn" type="reset">Reset</button>
+                    </div>
+                </div>
+                <div className="have-account">
+                    <span>Already have an account? <NavLink to="/login">Login</NavLink></span>
+                </div>
             </div>
-            <div className="form-submit">
-                <button type="reset">Reset</button>
-            </div>
-            <span>Already have an account? <NavLink to="/login">Login</NavLink></span>
 
         </form>)
     }
