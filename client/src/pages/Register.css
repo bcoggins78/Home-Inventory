@@ -1,0 +1,17 @@
+.register-form {
+    width: 25rem;
+    max-width: 80%;
+    margin: 5rem auto;
+}
+
+.register-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-container {
+    padding: 2rem;
+    background: white;
+    
+}
