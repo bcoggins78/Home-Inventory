@@ -40,7 +40,8 @@ app.use('/graphql', graphqlHttp({
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/home-inventory";
 mongoose.connect(MONGODB_URI);
 
+// Define port
+const PORT = process.env.PORT || 3001;
+
 // Start server listening on defined port
-app.listen(PORT, function () {
-    console.log(`🌎 ==> API server now on port ${PORT}!`);
-});
+app.listen(PORT, () => console.log(`🌎 ==> API server now on port ${PORT}!`));
