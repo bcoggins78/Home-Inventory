@@ -11,9 +11,6 @@ const graphQlResolvers = require('./graphql/resolvers/index');
 
 const isAuth = require('./middleware/is-auth');
 
-// Define port
-const PORT = process.env.PORT || 3001;
-
 const app = express();
 
 app.use(bodyParser.json());
