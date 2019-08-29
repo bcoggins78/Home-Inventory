@@ -5,6 +5,10 @@ import './Register.css'
 
 class RegisterPage extends Component {
 
+    state = {
+        success: false
+    }
+
     constructor(props) {
         super(props);
         this.userNameEl = React.createRef();
@@ -62,6 +66,8 @@ class RegisterPage extends Component {
             })
             .then(resData => {
                 console.log(resData);
+                this.setState({ success: true })
+                this.props.history.push('/login');
             })
             .catch(err => {
                 console.log(err);
@@ -71,25 +77,28 @@ class RegisterPage extends Component {
     render() {
         return (<form className="register-form" onSubmit={this.submitHandler}>
             <div className="form-container">
-                <div className="form-input">
-                    <label htmlFor="username">Username</label>
-                    <input type="username" ref={this.userNameEl}></input>
+                <div className="required">
+                    <span>* required fields</span>
                 </div>
                 <div className="form-input">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" ref={this.passwordEl}></input>
+                    <label htmlFor="username">Username *</label>
+                    <input type="username" ref={this.userNameEl} required></input>
                 </div>
                 <div className="form-input">
-                    <label htmlFor="email">Email</label>
-                    <input type="email" ref={this.emailEl}></input>
+                    <label htmlFor="password">Password *</label>
+                    <input type="password" ref={this.passwordEl} required></input>
                 </div>
                 <div className="form-input">
-                    <label htmlFor="firstname">First Name</label>
-                    <input type="text" ref={this.firstNameEl} name="firstname"></input>
+                    <label htmlFor="email">Email *</label>
+                    <input type="email" ref={this.emailEl} required></input>
                 </div>
                 <div className="form-input">
-                    <label htmlFor="lastname">Last Name</label>
-                    <input type="text" ref={this.lastNameEl} name="lastname"></input>
+                    <label htmlFor="firstname">First Name *</label>
+                    <input type="text" ref={this.firstNameEl} required name="firstname"></input>
+                </div>
+                <div className="form-input">
+                    <label htmlFor="lastname">Last Name *</label>
+                    <input type="text" ref={this.lastNameEl} required name="lastname"></input>
                 </div>
                 <div className="form-input">
                     <label htmlFor="insname">Insurance Company</label>
