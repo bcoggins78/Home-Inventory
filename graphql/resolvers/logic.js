@@ -6,6 +6,7 @@ const transformItem = item => {
     return {
         ...item._doc,
         _id: item.id,
+        user: user.bind(this, item._doc.user),
         createdAt: dateToString(item._doc.createdAt),
         updatedAt: dateToString(item._doc.updatedAt),
         creator: user.bind(this, item.creator)
@@ -18,6 +19,15 @@ const items = async itemIds => {
         return items.map(item => {
             return transformItem(item);
         });
+    } catch (err) {
+        throw err;
+    };
+};
+
+const singleItem = async itemId => {
+    try {
+        const item = await Item.findById(itemId);
+        return transformItem(item);
     } catch (err) {
         throw err;
     };
