@@ -3,11 +3,13 @@ const User = require('../../models/user');
 const { transformItem } = require('./logic');
 
 module.exports = {
-    items: async () => {
+    items: async (args, req) => {
+        if (!req.isAuth) {
+            throw new Error('Unauthenticated!');
+        }
         try {
-            const items = await Item.find()
-            return items
-                .map(item => {
+            const items = await Item.find({creator: req.userId})
+            return items.map(item => {
                     return transformItem(item);
                 })
         } catch (err) {
