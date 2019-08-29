@@ -176,6 +176,60 @@ class ItemsPage extends Component {
         })
     }
 
+    editItemHandler = itemId => {
+        alert("Feature Coming Soon!")
+    }
+
+    deleteItemHandler = itemId => {
+        if (window.confirm("Are you sure you want to delete this?")) {
+
+       
+        this.setState({ isLoading: true });
+        const requestBody = {
+            query: `
+                    mutation {
+                        deleteItem(itemId: "${itemId}") {
+                            _id
+                            name
+                        }
+                    }
+                `
+        };
+
+        const token = this.context.token;
+
+        fetch('/graphql', {
+            method: 'POST',
+            body: JSON.stringify(requestBody),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(res => {
+                if (res.status !==200 && res.status !== 201) {
+                    throw new Error('Failed');
+                }
+                return res.json();
+            })
+            .then(resData => {
+                console.log(resData);
+                this.setState(prevState => {
+                    const updatedItems = prevState.items.filter(item => {
+                        return item._id !== itemId;
+                    });
+                    return { items: updatedItems, isLoading: false };
+                });
+            })
+            .catch(err => {
+                console.log(err);
+                this.setState({ isLoading: false });
+            });
+        } else {
+            return;
+        }
+    };
+
     render() {
 
         return (
@@ -229,7 +283,8 @@ class ItemsPage extends Component {
                         canCancel
                         canConfirm
                         onCancel={this.modalCancelHandler}
-                        // onConfirm={this.modalConfirmHandler}
+                        onConfirm={this.editItemHandler}
+                        confirmText="Edit Item"
                         
                     >
                         <div className="modal-cell">
@@ -267,6 +322,7 @@ class ItemsPage extends Component {
                             items={this.state.items}
                             authUserId={this.context.userId}
                             onViewDetail={this.showDetailHandler}
+                            onItemDelete={this.deleteItemHandler}
                         />
                     )}
 
