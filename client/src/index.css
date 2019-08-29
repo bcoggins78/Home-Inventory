@@ -2,7 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: #132f4e
+  background: #132f4e;
+  /* background: url('./img/background.jpg') no-repeat center center/cover; */
 }
 
 .form-container {
