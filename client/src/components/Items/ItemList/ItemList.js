@@ -6,8 +6,6 @@ import './ItemList.css';
 const itemList = props => {
     const items = props.items.map(item => {
         return (
-            <React.Fragment>
-                {props.authUserId === item.creator._id ? (
                 <InventoryItem
                     key={item._id}
                     itemId={item._id}
@@ -16,14 +14,13 @@ const itemList = props => {
                     model={item.model}
                     description={item.description}
                     estValue={item.estValue}
-                    image={item.image}
+                    image={item.image ? item.image : "https://dummyimage.com/600x400/fff/000&text=No+Image"}
                     comment={item.comment}
                     userId={props.authUserId}
                     creatorId={item.creator._id}
                     onDetail={props.onViewDetail}
+                    onDelete={props.onItemDelete}
                 />
-                ) : (null)}
-            </React.Fragment>
         );
     });
     return (
