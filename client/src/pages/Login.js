@@ -47,6 +47,7 @@ class LoginPage extends Component {
         })
             .then(res => {
                 if (res.status !== 200 & res.status !== 201) {
+                    alert("Login Failed!");
                     throw new Error('Login Failed!');
                 }
                 return res.json();
