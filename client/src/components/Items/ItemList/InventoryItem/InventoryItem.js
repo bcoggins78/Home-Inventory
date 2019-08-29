@@ -13,8 +13,12 @@ const item = props => (
         </div>
         <div>
             <button className='btn' onClick={props.onDetail.bind(this, props.itemId)}>View Details</button>
+            <button className='red-btn' onClick={props.onDelete.bind(this, props.itemId)}>Delete</button>
         </div>
+        
+           
+        
     </li>
 );
 
-export default item
+export default item;
